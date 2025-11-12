@@ -1,73 +1,88 @@
-# Welcome to your Lovable project
+# 🗂️ Task Management System (React + Laravel)
 
-## Project info
+**Course:** CCS112 – Application Development and Emerging Technology  
+**University:** University of Cabuyao (Pamantasan ng Cabuyao)  
+**Instructor:** Mr. Joseph D. Cartagenas  
 
-**URL**: https://lovable.dev/projects/28d76992-1a0e-4019-a102-c635c57fe3dc
+---
 
-## How can I edit this code?
+## 📘 Project Overview
 
-There are several ways of editing your application.
+The **Task Management System** is a full-stack CRUD application built with **Laravel** (for the backend API) and **React** (for the frontend interface).  
+It allows users to **create**, **view**, **update**, **delete**, and **mark tasks as completed**.
 
-**Use Lovable**
+This project demonstrates RESTful API development, frontend-backend integration, and proper Git workflow across multiple milestones.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/28d76992-1a0e-4019-a102-c635c57fe3dc) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## ⚙️ Tech Stack
 
-**Use your preferred IDE**
+| Layer | Technology |
+|-------|-------------|
+| Frontend | React (using fetch/axios, Bootstrap or CSS) |
+| Backend | Laravel (API only) |
+| Database | MySQL or SQLite |
+| API Format | JSON |
+| Version Control | Git (5 milestone branches) |
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🧩 Features
 
-Follow these steps:
+### Core Features
+- View all tasks
+- Add a new task
+- Edit existing tasks
+- Delete tasks
+- Mark tasks as completed
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Backend (Laravel)
+- RESTful API endpoints:
+  | Method | Endpoint | Description |
+  |--------|-----------|-------------|
+  | `GET` | `/api/tasks` | Fetch all tasks |
+  | `POST` | `/api/tasks` | Create a new task |
+  | `GET` | `/api/tasks/{id}` | View a specific task |
+  | `PUT` | `/api/tasks/{id}` | Update a task |
+  | `DELETE` | `/api/tasks/{id}` | Delete a task |
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- Migration: `tasks` table with columns `id`, `title`, `description`, `status`, `due_date`, timestamps  
+- Seeder: Generates 20+ sample tasks  
+- Model: `Task` (`fillable`: `title`, `description`, `status`, `due_date`)
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Frontend (React)
+- `TaskList` – Displays all tasks  
+- `TaskForm` – Add new task  
+- `TaskEdit` – Edit existing task  
+- Optional: `TaskView` for detailed view  
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Includes:
+- Loading & error handling  
+- Confirmation before delete  
+- Automatic refresh after CRUD operations  
 
-**Edit a file directly in GitHub**
+## 🚀 Setup & Installation
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Frontend Setup (React)
+cd frontend
+npm install
+npm start
+React app runs by default at http://localhost:3000
 
-**Use GitHub Codespaces**
+If using a custom API port, create .env in /frontend:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+REACT_APP_API_URL=http://localhost:8000/api
 
-## What technologies are used for this project?
+###  Backend Setup (Laravel)
+```bash
+cd backend
+composer install
+cp .env.example .env
+php artisan key:generate
+# Configure your DB credentials in .env
+php artisan migrate --seed
+php artisan serve
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/28d76992-1a0e-4019-a102-c635c57fe3dc) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+cd frontend
+npm install
+npm start
